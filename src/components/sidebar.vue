@@ -145,9 +145,9 @@ const items = [
         permiss: '13',
     },
     {
-        icon: 'CoffeeCup',
-        index: '/donate',
-        title: '支持作者',
+        icon: 'PieChart',
+        index: '/basedemo',
+        title: '数据展示Demo',
         permiss: '14',
     },
 ];

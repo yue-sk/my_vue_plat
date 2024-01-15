@@ -9,9 +9,10 @@ export const fetchData = () => {
 };
 
 //从api中获取
-export const fetchCommits = () => {
+export const fetchCommits = (startDate: string, endDate: string) => {
+    const url = `https://www.fastmock.site/mock/6b6bab14f8dd4040d5d82be2508bca07/yue_api/api/get_data?startDate=${startDate}&endDate=${endDate}`;
     return request({
-        url:'https://www.fastmock.site/mock/6b6bab14f8dd4040d5d82be2508bca07/yue_api/api/get_data',
-        method: 'get'
-    });
+    url,
+    method: 'get'
+  });
 };

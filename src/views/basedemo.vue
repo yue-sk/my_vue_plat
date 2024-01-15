@@ -1,5 +1,12 @@
 <template>
-  <div ref="chart" style="height:400px;"></div>
+  <div>
+    <div>
+      <el-date-picker v-model="startDate" type="date" aria-placeholder="开始日期"></el-date-picker>
+      <el-date-picker v-model="endDate" type="date" aria-placeholder="结束日期"></el-date-picker>
+      <el-button @click="fetchData">获取数据</el-button>
+    </div>
+    <div ref="chart" style="height:400px;"></div>
+  </div>
 </template>
 
 <script>
@@ -10,7 +17,9 @@ export default {
   name: 'LineChart',
   data() {
     return {
-      Xdata: [] // 定义一个用于存放 x 轴数据的变量
+      Xdata: [],// 定义一个用于存放 x 轴数据的变量
+      startDate: "",
+      endDate: ""
     };
   },
   mounted() {
@@ -18,8 +27,9 @@ export default {
   },
   methods: {
     fetchData() {
-      fetchCommits()
+      fetchCommits(this.startDate, this.endDate)
         .then(response => {
+          console.log(this.startDate,this.endDate);
           console.log(response.data["X"]); // 打印返回的数据
           this.Xdata = response.data["X"]; // 将返回的数据赋值给 Xdata 变量
           this.renderChart(); // 调用渲染图表的方法
